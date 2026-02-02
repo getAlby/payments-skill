@@ -1,6 +1,6 @@
-# Alby Bitcoin Payments CLI skill
+# Alby Bitcoin Payments CLI Skill
 
-Skill for [Alby CLI](https://github.com/getAlby/cli)
+Agent Skill for [Alby CLI](https://github.com/getAlby/cli)
 
 ## Getting Started
 
