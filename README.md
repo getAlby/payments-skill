@@ -1,5 +1,7 @@
 # Alby Bitcoin Payments CLI skill
 
+Skill for [Alby CLI](https://github.com/getAlby/cli)
+
 ## Getting Started
 
 ### 🚀 Install with single command
