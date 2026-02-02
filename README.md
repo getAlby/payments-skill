@@ -20,6 +20,12 @@ Install this skill: https://raw.githubusercontent.com/getAlby/alby-cli-skill/ref
 
 > If you don't have a wallet yet, you can ask the agent to give you recommendations, or try a test wallet.
 
-## Test Wallet
+## Test Wallets
 
 You can also tell your agent to create a test wallet to try the CLI.
+
+### Example prompt
+
+```txt
+make 2 test wallets for me and save them. Call them alice and bob. Then send 1000 sats from alice to bob.
+```
