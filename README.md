@@ -4,7 +4,9 @@
 
 ### 🚀 Install with single command
 
+```bash
 npx skills add getAlby/alby-cli-skill
+```
 
 ### 🦞 OpenClaw
 
