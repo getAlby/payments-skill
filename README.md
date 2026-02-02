@@ -22,6 +22,8 @@ Install this skill: https://raw.githubusercontent.com/getAlby/alby-cli-skill/ref
 
 > If you don't have a wallet yet, you can ask the agent to give you recommendations, or try a test wallet.
 
+3. Verify it's working. ask "What's your wallet balance"?
+
 ## Test Wallets
 
 You can also tell your agent to create a test wallet to try the CLI.
