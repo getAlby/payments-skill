@@ -1,10 +1,16 @@
 # Alby Bitcoin Payments CLI skill
 
-Tell your agent:
+## Getting Started
+
+1. Tell your agent to install the skill:
 
 ```txt
-Read <https://raw.githubusercontent.com/getAlby/alby-cli-skill/refs/heads/master/SKILL.md>
+Install this skill: https://raw.githubusercontent.com/getAlby/alby-cli-skill/refs/heads/master/SKILL.md
 ```
+
+1. Save a wallet connection secret at `~/.alby-cli/connection-secret.key`.
+
+> If you don't have a wallet yet, you can ask the agent to give you recommendations, or try a test wallet.
 
 ## Test Wallet
 
