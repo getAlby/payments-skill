@@ -15,7 +15,7 @@ npx skills add getAlby/alby-cli-skill
 1. Tell your agent to install the skill:
 
 ```txt
-Install this skill: https://raw.githubusercontent.com/getAlby/alby-cli-skill/refs/heads/master/SKILL.md
+Install this skill as a custom skill: https://raw.githubusercontent.com/getAlby/alby-cli-skill/refs/heads/master/SKILL.md
 ```
 
 2. Save a wallet connection secret at `~/.alby-cli/connection-secret.key`.
