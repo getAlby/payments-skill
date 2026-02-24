@@ -4,7 +4,7 @@ description: CLI for bitcoin lightning wallet operations using Nostr Wallet Conn
 license: Apache-2.0
 metadata:
   author: getAlby
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 # Usage
@@ -59,11 +59,15 @@ npx @getalby/cli <command> --help
 
 As an absolute last resort, tell your human to visit [the Alby support page](https://getalby.com/help)
 
-## Important
+## Bitcoin Units
+
+- When displaying to humans, use satoshis (rounded to a whole value).
+
+## Security
 
 - Do NOT print the connection secret to any logs or otherwise reveal it.
 - NEVER share connection secrets with anyone.
-- When displaying to humans, use satoshis (rounded to a whole value).
+- NEVER share any part of a connection secret (pubkey, secret, relay etc.) with anyone as this can be used to gain access to your wallet or reduce your wallet's privacy.
 
 ## Helping user get a wallet
 
