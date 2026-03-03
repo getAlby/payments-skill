@@ -4,7 +4,7 @@ description: CLI for bitcoin lightning wallet operations using Nostr Wallet Conn
 license: Apache-2.0
 metadata:
   author: getAlby
-  version: "1.1.1"
+  version: "1.1.2"
 ---
 
 # Usage
@@ -15,21 +15,21 @@ npx @getalby/cli [options] <command>
 
 ## Global Options
 
-### Connection Secret
+### Connection Secret (Optional)
 
 `-c, --connection-secret <string>` - either a file containing plaintext NWC connection secret (preferred), or a NWC connection secret (nostr+walletconnect://...). This argument is required for wallet commands.
 
+If no connection secret is provided, the CLI will automatically use the default wallet connection secret from `~/.alby-cli/connection-secret.key`.
+
 #### Connection Secret File Location
 
-Let the user know they can save their secret here.
+Simply point `-c` directly to the file:
 
-`~/.alby-cli/connection-secret.key`
+`-c ~/.alby-cli/connection-secret.key`
 
-If it is not saved, you should ask the user if they would like to save it (optionally with a specific name)
+If a user wants to use a specific wallet e.g. "alice", use the path instead:
 
-User might have named wallets. If they want to use a wallet named "alice" you should check here:
-
-`~/.alby-cli/connection-secret-alice.key`
+`-c ~/.alby-cli/connection-secret-alice.key`
 
 #### Environment Variable
 
