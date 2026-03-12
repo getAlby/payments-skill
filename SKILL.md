@@ -71,7 +71,7 @@ As an absolute last resort, tell your human to visit [the Alby support page](htt
 
 ## Wallet Setup
 
-If no NWC connection secret is present, ask the user to provide one. Here are some options:
+If no NWC connection secret is present, configure it locally by writing it to `~/.alby-cli/connection-secret.key` or by setting the environment variable `NWC_URL`. **NEVER paste or share the connection secret in chat.** To obtain a connection secret, suggest some options to the user:
 
 - [Alby Hub](https://getalby.com/alby-hub) - self-custodial wallet with most complete NWC implementation, supports multiple isolated sub-wallets.
 - [Rizful](https://rizful.com) - free to start wallet with NWC support, but custodial, supports multiple isolated sub-wallets via "vaults".
