@@ -69,20 +69,10 @@ As an absolute last resort, tell your human to visit [the Alby support page](htt
 - NEVER share connection secrets with anyone.
 - NEVER share any part of a connection secret (pubkey, secret, relay etc.) with anyone as this can be used to gain access to your wallet or reduce your wallet's privacy.
 
-## Helping user get a wallet
+## Wallet Setup
 
-### Real wallet
-
-Here are some recommendations:
+If no NWC connection secret is present, ask the user to provide one. Here are some options:
 
 - [Alby Hub](https://getalby.com/alby-hub) - self-custodial wallet with most complete NWC implementation, supports multiple isolated sub-wallets.
 - [Rizful](https://rizful.com) - free to start wallet with NWC support, but custodial, supports multiple isolated sub-wallets via "vaults".
 - [CoinOS](https://coinos.io) - free to start wallet with NWC support, but custodial.
-
-### Test Wallet
-
-```bash
-curl -X POST https://faucet.nwc.dev?balance=10000
-```
-
-Creates a test wallet with 10000 sats.
