@@ -1,6 +1,6 @@
 ---
-name: alby-bitcoin-payments-cli-skill
-description: CLI for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive payments, check wallet balance, create invoices, convert between fiat and sats, or work with lightning addresses.
+name: alby-bitcoin-payments-skill
+description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive payments, check wallet balance, create invoices, convert between fiat and sats, or work with lightning addresses.
 license: Apache-2.0
 metadata:
   author: getAlby

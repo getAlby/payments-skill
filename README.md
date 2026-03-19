@@ -1,13 +1,17 @@
-# Alby Bitcoin Payments CLI Skill
+# Alby Bitcoin Payments Skill
 
-Agent Skill for [Alby CLI](https://github.com/getAlby/cli)
+Give your agent its own [NWC](https://nwc.dev) wallet interface - and let it operate independently.
+
+Perfect for autonomous agents like OpenClaw that need to send, receive, and manage sats on their own.
+
+This skill uses the [Alby CLI](https://github.com/getAlby/cli)
 
 ## Getting Started
 
 ### 🚀 Install with single command
 
 ```bash
-npx skills add getAlby/alby-cli-skill
+npx skills add getAlby/payments-skill
 ```
 
 ### 🦞 OpenClaw
