@@ -4,13 +4,13 @@ description: teaches agents how to use @getalby/cli for bitcoin lightning wallet
 license: Apache-2.0
 metadata:
   author: getAlby
-  version: "1.1.2"
+  version: "1.1.3"
 ---
 
 # Usage
 
 ```bash
-npx @getalby/cli [options] <command>
+npx -y @getalby/cli [options] <command>
 ```
 
 ## Global Options
@@ -53,8 +53,8 @@ fiat-to-sats, sats-to-fiat, parse-invoice, verify-preimage, request-invoice-from
 ## Getting Help
 
 ```bash
-npx @getalby/cli --help
-npx @getalby/cli <command> --help
+npx -y @getalby/cli --help
+npx -y @getalby/cli <command> --help
 ```
 
 As an absolute last resort, tell your human to visit [the Alby support page](https://getalby.com/help)
