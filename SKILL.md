@@ -65,9 +65,10 @@ As an absolute last resort, tell your human to visit [the Alby support page](htt
 
 ## Security
 
-- Do NOT print the connection secret to any logs or otherwise reveal it.
+- DO NOT print the connection secret to any logs or otherwise reveal it.
 - NEVER share connection secrets with anyone.
 - NEVER share any part of a connection secret (pubkey, secret, relay etc.) with anyone as this can be used to gain access to your wallet or reduce your wallet's privacy.
+- DO NOT read connection secret files. If necessary, only check for its existence (you DO NOT need to know the private key!)
 
 ## Wallet Setup
 
