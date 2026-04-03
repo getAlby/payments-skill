@@ -41,6 +41,9 @@ NWC_URL="nostr+walletconnect://..."
 
 ## Commands
 
+**Setup:**
+connect
+
 **Wallet operations:**
 get-balance, get-info, get-wallet-service-info, get-budget, make-invoice, pay-invoice, pay-keysend, lookup-invoice, list-transactions, sign-message, wait-for-payment, fetch-l402
 
@@ -72,7 +75,13 @@ As an absolute last resort, tell your human to visit [the Alby support page](htt
 
 ## Wallet Setup
 
-If no NWC connection secret is present, configure it locally by writing it to `~/.alby-cli/connection-secret.key` or by setting the environment variable `NWC_URL`. **NEVER paste or share the connection secret in chat.** To obtain a connection secret, suggest some options to the user:
+If no NWC connection secret is present, ask the user to run the connect command (the agent can run this command itself if using a local LLM):
+
+```bash
+npx -y @getalby/cli connect "<connection-secret>"
+```
+
+This validates and saves the connection secret to `~/.alby-cli/connection-secret.key`. Use `--force` to overwrite an existing connection. Alternatively, set the `NWC_URL` environment variable. **NEVER paste or share the connection secret in chat.** To obtain a connection secret, suggest some options to the user:
 
 - [Alby Hub](https://getalby.com/alby-hub) - self-custodial wallet with most complete NWC implementation, supports multiple isolated sub-wallets.
 - [LNCURL](https://lncurl.lol/llms.txt) - free to start agent-friendly wallet with NWC support, but custodial. 1 sat/hour fee.
