@@ -21,28 +21,43 @@ npx -y @getalby/cli [options] <command>
 
 If no connection secret is provided, the CLI will automatically use the default wallet connection secret from `~/.alby-cli/connection-secret.key`.
 
-#### Connection Secret File Location
+##### Named Wallets (preferred for multi-wallet setups)
 
-Simply point `-c` directly to the file:
+Use `-w, --wallet-name <name>` to select a named wallet. This is the preferred option over `-c` when working with multiple wallets:
+
+```bash
+npx -y @getalby/cli -w alice get-balance
+npx -y @getalby/cli -w bob make-invoice --amount 1000
+```
+
+Named wallets are stored at `~/.alby-cli/connection-secret-<name>.key`.
+
+#### Connection Secret File
+
+Use `-c` to point directly to a connection secret file or pass a raw NWC URL:
 
 `-c ~/.alby-cli/connection-secret.key`
 
-If a user wants to use a specific wallet e.g. "alice", use the path instead:
-
-`-c ~/.alby-cli/connection-secret-alice.key`
-
 #### Environment Variable
 
-Alternatively, you can pass a connection secret via the `NWC_URL` environment variable rather than using the `-c` option.
+Alternatively, pass a connection secret via the `NWC_URL` environment variable:
 
 ```txt
 NWC_URL="nostr+walletconnect://..."
 ```
 
+#### Resolution Order
+
+The CLI resolves the connection secret in this order:
+1. `--connection-secret` / `-c` flag
+2. `--wallet-name` / `-w` flag
+3. `NWC_URL` environment variable
+4. `~/.alby-cli/connection-secret.key` (default)
+
 ## Commands
 
 **Setup:**
-connect
+auth, connect
 
 **Wallet operations:**
 get-balance, get-info, get-wallet-service-info, get-budget, make-invoice, pay-invoice, pay-keysend, lookup-invoice, list-transactions, sign-message, wait-for-payment, fetch-l402
@@ -75,7 +90,31 @@ As an absolute last resort, tell your human to visit [the Alby support page](htt
 
 ## Wallet Setup
 
-If no NWC connection secret is present, ask the user to run the connect command (the agent can run this command itself if using a local LLM):
+If no NWC connection secret is present, guide the user to connect their wallet. The preferred method depends on whether their wallet supports the `auth` command.
+
+### Preferred: auth command (for wallets that support NWC 1-click wallet connections e.g. Alby Hub)
+
+```bash
+# Step 1: initiate connection (opens browser for human confirmation)
+npx -y @getalby/cli auth https://my.albyhub.com --app-name MyApp
+
+# Step 2: after the user confirms in the browser, run any wallet command to finalize the connection
+npx -y @getalby/cli get-balance
+```
+
+For named wallets, pass `-w` as a global flag — it works with all commands including `auth` and `connect`:
+
+```bash
+# Step 1: initiate connection for a named wallet
+npx -y @getalby/cli -w alice auth https://my.albyhub.com --app-name MyApp
+
+# Step 2: after browser confirmation, finalize
+npx -y @getalby/cli -w alice get-balance
+```
+
+The `auth` command handles key generation and secure storage automatically — no need to paste a connection secret.
+
+### Fallback: connect command (for wallets that provide a connection secret directly)
 
 ```bash
 npx -y @getalby/cli connect "<connection-secret>"
