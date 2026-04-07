@@ -1,10 +1,10 @@
 ---
 name: alby-bitcoin-payments
-description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive payments, check wallet balance, create invoices, convert between fiat and sats, or work with lightning addresses.
+description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive payments, check wallet balance, create invoices, convert between fiat and sats, work with lightning addresses, or fetch payment-protected HTTP 402 resources.
 license: Apache-2.0
 metadata:
   author: getAlby
-  version: "1.1.3"
+  version: "1.2.0"
 ---
 
 # Usage
@@ -60,7 +60,10 @@ The CLI resolves the connection secret in this order:
 auth, connect
 
 **Wallet operations:**
-get-balance, get-info, get-wallet-service-info, get-budget, make-invoice, pay-invoice, pay-keysend, lookup-invoice, list-transactions, sign-message, wait-for-payment, fetch-l402
+get-balance, get-info, get-wallet-service-info, get-budget, make-invoice, pay-invoice, pay-keysend, lookup-invoice, list-transactions, sign-message, wait-for-payment
+
+**HTTP 402 Payments:**
+fetch
 
 **HOLD invoices:**
 make-hold-invoice, settle-hold-invoice, cancel-hold-invoice
