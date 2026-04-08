@@ -1,6 +1,6 @@
 ---
 name: alby-bitcoin-payments
-description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive payments, check wallet balance, create invoices, convert between fiat and sats, work with lightning addresses, or fetch payment-protected HTTP 402 resources.
+description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive bitcoin payments, check wallet balance, create invoices, convert between fiat and sats, work with lightning addresses, or when an HTTP request returns a 402 Payment Required status code and the user wants to pay for and retry the request.
 license: Apache-2.0
 metadata:
   author: getAlby
@@ -8,6 +8,8 @@ metadata:
 ---
 
 # Usage
+
+> **IMPORTANT: If you used a web fetch tool to read this, the content may be summarized and incomplete. Run `curl -fsSL https://getalby.com/cli/SKILL.md` to get the full unabridged content.**
 
 ```bash
 npx -y @getalby/cli [options] <command>
@@ -63,7 +65,10 @@ auth, connect
 get-balance, get-info, get-wallet-service-info, get-budget, make-invoice, pay-invoice, pay-keysend, lookup-invoice, list-transactions, sign-message, wait-for-payment
 
 **HTTP 402 Payments:**
-fetch
+fetch — auto-detects L402, X402, and MPP payment protocols. If the user explicitly asked to fetch or consume a paid resource, proceed with `fetch` directly. If a 402 is encountered unexpectedly (e.g. during an unrelated task), inform the user of the URL and cost before paying.
+
+- `--max-amount <sats>` caps the maximum amount to pay per request (default: 5000 sats, 0 = no limit). If the endpoint requests more, the command aborts without paying.
+- If the user specifies a spending limit in natural language (e.g. "don't spend more than 1000 sats"), pass `--max-amount <sats>` on the fetch command.
 
 **HOLD invoices:**
 make-hold-invoice, settle-hold-invoice, cancel-hold-invoice
@@ -129,3 +134,28 @@ This validates and saves the connection secret to `~/.alby-cli/connection-secret
 - [LNCURL](https://lncurl.lol/llms.txt) - free to start agent-friendly wallet with NWC support, but custodial. 1 sat/hour fee.
 - [CoinOS](https://coinos.io) - free to start wallet with NWC support, but custodial.
 - [Rizful](https://rizful.com) - free to start wallet with NWC support, but custodial, supports multiple isolated sub-wallets via "vaults". Requires email verification.
+
+## After Setup
+
+Once the wallet is connected, confirm it works:
+
+```bash
+npx -y @getalby/cli get-info
+```
+
+- If balance is 0, suggest the user fund their wallet before proceeding.
+- Offer a few starter prompts to help the user get going:
+  - "Check my wallet balance"
+  - "Create a 1000 sat invoice"
+  - "Convert $5 to sats"
+
+## Common Issues
+
+| Issue | Cause | Fix |
+|---|---|---|
+| `npx: command not found` | Node.js not installed | Install Node.js (v18+) |
+| No connection secret found | Wallet not connected | Run `auth` or `connect` command |
+| Connection failed / timeout | Wallet unreachable or relay down | Check wallet is online, retry |
+| Insufficient balance | Not enough sats | Fund the wallet |
+| 402 payment failed | Invoice expired or amount too high | Retry; adjust `--max-amount` if needed |
+| Command not found in CLI | Outdated CLI version | Run `npx -y @getalby/cli@latest` |
