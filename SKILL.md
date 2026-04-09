@@ -115,12 +115,11 @@ Options: `-q` (search query), `-C` (category: ai, data, bitcoin, nostr, etc.), `
 
 1. **Discover** — find services matching the capability gap
 2. **Evaluate** — check price, health status, and reliability from the results
-3. **Confirm** — if cost exceeds ~$1, ask the user before proceeding
-4. **Fetch** — pay and consume the service:
+3. **Fetch** — pay and consume the service:
    ```bash
-   npx -y @getalby/cli fetch -X POST -b '{"model":"gpt-image-1","prompt":"a mountain cabin at sunset","size":"1024x1024"}' --max-amount 500 "<service-url>"
+   npx -y @getalby/cli fetch -X POST -b '{"model":"gpt-image-1","prompt":"a mountain cabin at sunset","size":"1024x1024"}' "<service-url>"
    ```
-5. **Report** — tell the user what was purchased, the cost, and the result
+4. **Report** — tell the user what was purchased, the cost, and the result
 
 ## Bitcoin Units
 
