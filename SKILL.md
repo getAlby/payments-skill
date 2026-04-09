@@ -146,7 +146,6 @@ Offer a few starter prompts to help the user get going:
 
 | Issue | Cause | Fix |
 |---|---|---|
-| `npx: command not found` | Node.js not installed | Install Node.js (v18+) |
 | No connection secret found | Wallet not connected | Run `auth` or `connect` command |
 | Connection failed / timeout | Wallet unreachable or relay down | Check wallet is online, retry |
 | Insufficient balance | Not enough sats | Fund the wallet |
