@@ -137,12 +137,6 @@ This validates and saves the connection secret to `~/.alby-cli/connection-secret
 
 ## After Setup
 
-Once the wallet is connected, confirm it works:
-
-```bash
-npx -y @getalby/cli get-info
-```
-
 Offer a few starter prompts to help the user get going:
   - "How much is $10 in sats right now?"
   - "Send $5 to hub@getalby.com for coffee"
