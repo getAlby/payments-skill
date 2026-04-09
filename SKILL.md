@@ -1,6 +1,6 @@
 ---
 name: alby-bitcoin-payments
-description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive bitcoin payments, check wallet balance, create invoices, convert between fiat and sats, work with lightning addresses, or when an HTTP request returns a 402 Payment Required status code and the user wants to pay for and retry the request.
+description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive bitcoin payments, check wallet balance, create invoices, convert between fiat and sats, work with lightning addresses, when an HTTP request returns a 402 Payment Required status code and the user wants to pay for and retry the request, or discover paid API services.
 license: Apache-2.0
 metadata:
   author: getAlby
@@ -70,6 +70,9 @@ fetch — auto-detects L402, X402, and MPP payment protocols. If the user explic
 - `--max-amount <sats>` caps the maximum amount to pay per request (default: 5000 sats, 0 = no limit). If the endpoint requests more, the command aborts without paying.
 - If the user specifies a spending limit in natural language (e.g. "don't spend more than 1000 sats"), pass `--max-amount <sats>` on the fetch command.
 
+**Service Discovery (no wallet needed):**
+discover
+
 **HOLD invoices:**
 make-hold-invoice, settle-hold-invoice, cancel-hold-invoice
 
@@ -84,6 +87,40 @@ npx -y @getalby/cli <command> --help
 ```
 
 As an absolute last resort, tell your human to visit [the Alby support page](https://getalby.com/help)
+
+## Discovering Paid Services
+
+The `discover` command searches [402index.io](https://402index.io) for lightning-payable API endpoints. It only returns services that accept bitcoin/lightning payments.
+
+```bash
+npx -y @getalby/cli discover -q "image generation"          # search by query
+npx -y @getalby/cli discover -C ai                          # filter by category
+npx -y @getalby/cli discover -q "bitcoin price" --limit 20  # more results
+```
+
+Options: `-q` (search query), `-C` (category: ai, data, bitcoin, nostr, etc.), `-s` (sort: Reliability, Latency, Price, Name), `-l` (limit, default: 10).
+
+### When to use discover
+
+- The user explicitly asks to find or explore paid APIs
+- You lack a capability that no free or built-in tool can provide (e.g. image generation, specialized inference, real-time data feeds)
+
+### When NOT to use discover
+
+- **Do NOT search 402index before attempting a task with your existing tools.** Try free/built-in approaches first.
+- **Do NOT use discover as a replacement for standard web requests.** If `curl`, `fetch`, or WebFetch works, use that instead.
+- **Do NOT use discover when you already have a URL.** Just use the `fetch` command directly.
+
+### Discover → Fetch flow
+
+1. **Discover** — find services matching the capability gap
+2. **Evaluate** — check price, health status, and reliability from the results
+3. **Confirm** — if cost exceeds ~$1, ask the user before proceeding
+4. **Fetch** — pay and consume the service:
+   ```bash
+   npx -y @getalby/cli fetch -X POST -b '{"model":"gpt-image-1","prompt":"a mountain cabin at sunset","size":"1024x1024"}' --max-amount 500 "<service-url>"
+   ```
+5. **Report** — tell the user what was purchased, the cost, and the result
 
 ## Bitcoin Units
 
