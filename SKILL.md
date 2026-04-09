@@ -94,7 +94,7 @@ The `discover` command searches [402index.io](https://402index.io) for lightning
 
 ```bash
 npx -y @getalby/cli discover -q "image generation"          # search by query
-npx -y @getalby/cli discover -q "bitcoin price" --limit 20  # more results
+npx -y @getalby/cli discover -q "podcast" --limit 20        # more results
 ```
 
 Options: `-q` (search query), `-s` (sort: reliability, latency, price, name), `-l` (limit, default: 10).
