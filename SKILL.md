@@ -143,11 +143,10 @@ Once the wallet is connected, confirm it works:
 npx -y @getalby/cli get-info
 ```
 
-- If balance is 0, suggest the user fund their wallet before proceeding.
-- Offer a few starter prompts to help the user get going:
-  - "Check my wallet balance"
-  - "Create a 1000 sat invoice"
-  - "Convert $5 to sats"
+Offer a few starter prompts to help the user get going:
+  - "How much is $10 in sats right now?"
+  - "Send $5 to hub@getalby.com for coffee"
+  - "Show me my recent transactions"
 
 ## Common Issues
 
