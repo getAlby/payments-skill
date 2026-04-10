@@ -5,6 +5,11 @@ license: Apache-2.0
 metadata:
   author: getAlby
   version: "1.2.1"
+  openclaw:
+    requires:
+      env:
+        - NWC_URL
+    primaryEnv: NWC_URL
 ---
 
 # Usage
