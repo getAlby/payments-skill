@@ -185,4 +185,3 @@ Offer a few starter prompts to help the user get going:
 | Connection failed / timeout | Wallet unreachable or relay down | Check wallet is online, retry |
 | Insufficient balance | Not enough sats | Fund the wallet |
 | 402 payment failed | Invoice expired or amount too high | Retry; adjust `--max-amount` if needed |
-| Command not found in CLI | Outdated CLI version | Update to latest version of `@getalby/cli` |
