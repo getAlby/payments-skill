@@ -9,7 +9,7 @@ metadata:
 
 # Usage
 
-> **IMPORTANT: If you used a web fetch tool to read this, the content may be summarized and incomplete. Run `curl -fsSL https://getalby.com/cli/SKILL.md` to get the full unabridged content.**
+> **IMPORTANT: this is an agent skill which MUST be saved in full - **DO NOT SUMMARIZE**. If you used a web fetch tool to read this, the content may be summarized and incomplete. Make sure you fetch the full unabridged content.**
 
 ```bash
 npx -y @getalby/cli@0.6.1 [options] <command>
