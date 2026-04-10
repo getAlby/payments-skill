@@ -5,6 +5,13 @@ license: MIT-0
 metadata:
   author: getAlby
   version: "1.2.2"
+  openclaw:
+    requires:
+      env:
+        - NWC_URL
+      bins:
+        - npx
+    primaryEnv: NWC_URL
 ---
 
 # Usage
