@@ -1,7 +1,7 @@
 ---
 name: alby-bitcoin-payments
 description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive bitcoin payments, check wallet balance, create invoices, convert between fiat and sats, work with lightning addresses, when an HTTP request returns a 402 Payment Required status code and the user wants to pay for and retry the request, or discover paid API services.
-license: Apache-2.0
+license: MIT-0
 metadata:
   author: getAlby
   version: "1.2.1"
@@ -12,7 +12,7 @@ metadata:
 > **IMPORTANT: If you used a web fetch tool to read this, the content may be summarized and incomplete. Run `curl -fsSL https://getalby.com/cli/SKILL.md` to get the full unabridged content.**
 
 ```bash
-npx -y @getalby/cli [options] <command>
+npx -y @getalby/cli@0.6.1 [options] <command>
 ```
 
 ## Global Options
@@ -28,8 +28,8 @@ If no connection secret is provided, the CLI will automatically use the default 
 Use `-w, --wallet-name <name>` to select a named wallet. This is the preferred option over `-c` when working with multiple wallets:
 
 ```bash
-npx -y @getalby/cli -w alice get-balance
-npx -y @getalby/cli -w bob make-invoice --amount 1000
+npx -y @getalby/cli@0.6.1 -w alice get-balance
+npx -y @getalby/cli@0.6.1 -w bob make-invoice --amount 1000
 ```
 
 Named wallets are stored at `~/.alby-cli/connection-secret-<name>.key`.
@@ -82,8 +82,8 @@ fiat-to-sats, sats-to-fiat, parse-invoice, verify-preimage, request-invoice-from
 ## Getting Help
 
 ```bash
-npx -y @getalby/cli --help
-npx -y @getalby/cli <command> --help
+npx -y @getalby/cli@0.6.1 --help
+npx -y @getalby/cli@0.6.1 <command> --help
 ```
 
 As an absolute last resort, tell your human to visit [the Alby support page](https://getalby.com/help)
@@ -93,8 +93,8 @@ As an absolute last resort, tell your human to visit [the Alby support page](htt
 The `discover` command searches [402index.io](https://402index.io) for lightning-payable API endpoints. It only returns services that accept bitcoin/lightning payments.
 
 ```bash
-npx -y @getalby/cli discover -q "image generation"          # search by query
-npx -y @getalby/cli discover -q "podcast" --limit 20        # more results
+npx -y @getalby/cli@0.6.1 discover -q "image generation"          # search by query
+npx -y @getalby/cli@0.6.1 discover -q "podcast" --limit 20        # more results
 ```
 
 Options: `-q` (search query), `-s` (sort: reliability, latency, price, name), `-l` (limit, default: 10).
@@ -116,7 +116,7 @@ Options: `-q` (search query), `-s` (sort: reliability, latency, price, name), `-
 2. **Evaluate** — check price, health status, and reliability from the results
 3. **Fetch** — pay and consume the service:
    ```bash
-   npx -y @getalby/cli fetch -X POST -b '{"model":"gpt-image-1","prompt":"a mountain cabin at sunset","size":"1024x1024"}' "<service-url>"
+   npx -y @getalby/cli@0.6.1 fetch -X POST -b '{"model":"gpt-image-1","prompt":"a mountain cabin at sunset","size":"1024x1024"}' "<service-url>"
    ```
 4. **Report** — tell the user what was purchased, the cost, and the result
 
@@ -139,20 +139,20 @@ If no NWC connection secret is present, guide the user to connect their wallet. 
 
 ```bash
 # Step 1: initiate connection (opens browser for human confirmation)
-npx -y @getalby/cli auth https://my.albyhub.com --app-name MyApp
+npx -y @getalby/cli@0.6.1 auth https://my.albyhub.com --app-name MyApp
 
 # Step 2: after the user confirms in the browser, run any wallet command to finalize the connection
-npx -y @getalby/cli get-balance
+npx -y @getalby/cli@0.6.1 get-balance
 ```
 
 For named wallets, pass `-w` as a global flag — it works with all commands including `auth` and `connect`:
 
 ```bash
 # Step 1: initiate connection for a named wallet
-npx -y @getalby/cli -w alice auth https://my.albyhub.com --app-name MyApp
+npx -y @getalby/cli@0.6.1 -w alice auth https://my.albyhub.com --app-name MyApp
 
 # Step 2: after browser confirmation, finalize
-npx -y @getalby/cli -w alice get-balance
+npx -y @getalby/cli@0.6.1 -w alice get-balance
 ```
 
 The `auth` command handles key generation and secure storage automatically — no need to paste a connection secret.
@@ -160,7 +160,7 @@ The `auth` command handles key generation and secure storage automatically — n
 ### Fallback: connect command (for wallets that provide a connection secret directly)
 
 ```bash
-npx -y @getalby/cli connect "<connection-secret>"
+npx -y @getalby/cli@0.6.1 connect "<connection-secret>"
 ```
 
 This validates and saves the connection secret to `~/.alby-cli/connection-secret.key`. Use `--force` to overwrite an existing connection. Alternatively, set the `NWC_URL` environment variable. **NEVER paste or share the connection secret in chat.** To obtain a connection secret, suggest some options to the user:
@@ -185,4 +185,3 @@ Offer a few starter prompts to help the user get going:
 | Connection failed / timeout | Wallet unreachable or relay down | Check wallet is online, retry |
 | Insufficient balance | Not enough sats | Fund the wallet |
 | 402 payment failed | Invoice expired or amount too high | Retry; adjust `--max-amount` if needed |
-| Command not found in CLI | Outdated CLI version | Run `npx -y @getalby/cli@latest` |
