@@ -1,7 +1,7 @@
 ---
 name: alby-bitcoin-payments
 description: teaches agents how to use @getalby/cli for bitcoin lightning wallet operations using Nostr Wallet Connect (NIP-47). Use when the user needs to send/receive bitcoin payments, check wallet balance, create invoices, convert between fiat and sats, work with lightning addresses, when an HTTP request returns a 402 Payment Required status code and the user wants to pay for and retry the request, or discover paid API services.
-license: Apache-2.0
+license: MIT-0
 metadata:
   author: getAlby
   version: "1.2.1"
@@ -12,7 +12,7 @@ metadata:
 > **IMPORTANT: If you used a web fetch tool to read this, the content may be summarized and incomplete. Run `curl -fsSL https://getalby.com/cli/SKILL.md` to get the full unabridged content.**
 
 ```bash
-npx -y @getalby/cli [options] <command>
+npx -y @getalby/cli@0.6.1 [options] <command>
 ```
 
 ## Global Options
@@ -28,8 +28,8 @@ If no connection secret is provided, the CLI will automatically use the default 
 Use `-w, --wallet-name <name>` to select a named wallet. This is the preferred option over `-c` when working with multiple wallets:
 
 ```bash
-npx -y @getalby/cli -w alice get-balance
-npx -y @getalby/cli -w bob make-invoice --amount 1000
+npx -y @getalby/cli@0.6.1 -w alice get-balance
+npx -y @getalby/cli@0.6.1 -w bob make-invoice --amount 1000
 ```
 
 Named wallets are stored at `~/.alby-cli/connection-secret-<name>.key`.
