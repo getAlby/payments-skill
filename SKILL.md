@@ -4,7 +4,7 @@ description: teaches agents how to use @getalby/cli for bitcoin lightning wallet
 license: MIT-0
 metadata:
   author: getAlby
-  version: "1.2.2"
+  version: "1.2.3"
   openclaw:
     requires:
       env:
