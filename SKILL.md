@@ -11,7 +11,11 @@ metadata:
         - NWC_URL
       bins:
         - npx
+      config:
+        - ~/.alby-cli/
     primaryEnv: NWC_URL
+    emoji: "🐝"
+    homepage: https://getalby.com
 ---
 
 # Usage
