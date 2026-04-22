@@ -149,12 +149,18 @@ If no NWC connection secret is present, guide the user to connect their wallet. 
 ### Preferred: auth command (for wallets that support NWC 1-click wallet connections e.g. Alby Hub)
 
 ```bash
-# Step 1: initiate connection (opens browser for human confirmation)
+# Step 1: initiate connection — prints a URL for the user to approve in their browser
 npx -y @getalby/cli@0.6.1 auth https://my.albyhub.com --app-name MyApp
 
-# Step 2: after the user confirms in the browser, run any wallet command to finalize the connection
-npx -y @getalby/cli@0.6.1 get-balance
+# Step 2: after the user approves in the browser, run any wallet command to finalize the connection
+npx -y @getalby/cli@0.6.1 get-info
 ```
+
+**Important for agents:** The `auth` command does NOT open a browser or block. It prints a URL and exits immediately. You must:
+1. Run the `auth` command
+2. Present the printed URL to the user and ask them to open it and approve the connection
+3. Wait for the user to confirm they approved
+4. Run `get-info` to finalize the connection
 
 For named wallets, pass `-w` as a global flag — it works with all commands including `auth` and `connect`:
 
@@ -162,8 +168,8 @@ For named wallets, pass `-w` as a global flag — it works with all commands inc
 # Step 1: initiate connection for a named wallet
 npx -y @getalby/cli@0.6.1 -w alice auth https://my.albyhub.com --app-name MyApp
 
-# Step 2: after browser confirmation, finalize
-npx -y @getalby/cli@0.6.1 -w alice get-balance
+# Step 2: after the user approves, finalize
+npx -y @getalby/cli@0.6.1 -w alice get-info
 ```
 
 The `auth` command handles key generation and secure storage automatically — no need to paste a connection secret.

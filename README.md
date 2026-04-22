@@ -11,7 +11,7 @@ This skill uses the [Alby CLI](https://github.com/getAlby/cli)
 ### 🚀 Install with single command
 
 ```bash
-npx skills add getAlby/payments-skill
+npx -y skills add getAlby/payments-skill -y
 ```
 
 ### 🦞 OpenClaw
