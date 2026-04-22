@@ -19,7 +19,7 @@ npx skills add getAlby/payments-skill
 1. Tell your agent to install the skill:
 
 ```txt
-Install this skill as a custom skill: https://getalby.com/cli/SKILL.md
+Install this skill as a custom skill: https://getalby.com/payments/SKILL.md
 ```
 
 2. Connect your wallet. The preferred method is the `auth` command if your wallet supports it (e.g. Alby Hub):
