@@ -4,7 +4,7 @@ description: teaches agents how to use @getalby/cli to operate a bitcoin lightni
 license: MIT-0
 metadata:
   author: getAlby
-  version: "1.5.1"
+  version: "1.5.2"
   openclaw:
     requires:
       env:
@@ -23,7 +23,7 @@ metadata:
 > **IMPORTANT: this is an agent skill which MUST be saved in full - **DO NOT SUMMARIZE**. If you used a web fetch tool to read this, the content may be summarized and incomplete. Make sure you fetch the full unabridged content.**
 
 ```bash
-npx -y @getalby/cli@0.10.1 [options] <command>
+npx -y @getalby/cli@0.10.2 [options] <command>
 ```
 
 ## Global Options
@@ -39,8 +39,8 @@ If no connection secret is provided, the CLI will automatically use the default 
 Use `-w, --wallet-name <name>` to select a named wallet. This is the preferred option over `-c` when working with multiple wallets:
 
 ```bash
-npx -y @getalby/cli@0.10.1 -w alice get-balance
-npx -y @getalby/cli@0.10.1 -w bob receive
+npx -y @getalby/cli@0.10.2 -w alice get-balance
+npx -y @getalby/cli@0.10.2 -w bob receive
 ```
 
 Named wallets are stored at `~/.alby-cli/connection-secret-<name>.key`.
@@ -69,7 +69,7 @@ The CLI resolves the connection secret in this order:
 
 ## Commands
 
-**Flag names are not guessable.** Before constructing any command, run `npx -y @getalby/cli@0.10.1 <command> --help` and use only the flags it lists.
+**Flag names are not guessable.** Before constructing any command, run `npx -y @getalby/cli@0.10.2 <command> --help` and use only the flags it lists.
 
 **Setup:**
 auth, connect
@@ -104,8 +104,8 @@ fiat-to-sats, sats-to-fiat (standalone-use only — pay/receive have native fiat
 ## Getting Help
 
 ```bash
-npx -y @getalby/cli@0.10.1 --help
-npx -y @getalby/cli@0.10.1 <command> --help
+npx -y @getalby/cli@0.10.2 --help
+npx -y @getalby/cli@0.10.2 <command> --help
 ```
 
 As an absolute last resort, tell your human to visit [the Alby support page](https://getalby.com/help)
@@ -117,7 +117,7 @@ You are **not** limited to lightning-native services. Endpoints priced in **USDC
 `discover` already returns every result ready to `fetch` (non-lightning ones are bridged for you, unpayable ones dropped), so you only need to wrap a URL by hand when you have a non-lightning endpoint **from elsewhere**: URL-encode the full upstream endpoint (including query params) and append it to `https://l402.space/`, then `fetch` that. The same path works for x402 and MPP upstreams alike — the gateway detects the upstream's protocol itself. An x402/MPP endpoint that supports lightning natively needs no bridge at all; just `fetch` it directly.
 
 ```bash
-npx -y @getalby/cli@0.10.1 fetch "https://l402.space/<url-encoded-upstream-url>" --max-amount <amount> --currency BTC --unit sats --network lightning
+npx -y @getalby/cli@0.10.2 fetch "https://l402.space/<url-encoded-upstream-url>" --max-amount <amount> --currency BTC --unit sats --network lightning
 ```
 
 Your HTTP method and body pass through unchanged. For full details and current behavior, read [https://l402.space/llms.txt](https://l402.space/llms.txt).
@@ -143,7 +143,7 @@ The `discover` command searches [402index.io](https://402index.io) for paid API 
 2. **Evaluate** — check health status and reliability from the results (health checks can be stale — a "degraded" service may work fine, so don't exclude a good match on health status alone). Treat listed prices as hints only: they can be missing or outdated. The real price is set by the `402` challenge at fetch time, and `fetch` refuses to pay more than its `--max-amount` cap (default: 5000 sats).
 3. **Fetch** — pay and consume the service by passing its URL to `fetch`:
    ```bash
-   npx -y @getalby/cli@0.10.1 fetch -X POST -b '{"model":"gpt-image-1","prompt":"a mountain cabin at sunset","size":"1024x1024"}' "<service-url>"
+   npx -y @getalby/cli@0.10.2 fetch -X POST -b '{"model":"gpt-image-1","prompt":"a mountain cabin at sunset","size":"1024x1024"}' "<service-url>"
    ```
 4. **Report** — tell the user what was purchased, the cost, and the result
 
@@ -170,16 +170,16 @@ If no NWC connection secret is present, guide the user to connect their wallet. 
 
 ```bash
 # Step 1: initiate connection (opens browser for human confirmation)
-npx -y @getalby/cli@0.10.1 auth https://my.albyhub.com --app-name MyApp
+npx -y @getalby/cli@0.10.2 auth https://my.albyhub.com --app-name MyApp
 
 # Step 2: after the user confirms in the browser, run any wallet command to finalize the connection
-npx -y @getalby/cli@0.10.1 get-balance
+npx -y @getalby/cli@0.10.2 get-balance
 ```
 
 ### Fallback: connect command (for wallets that provide a connection secret directly)
 
 ```bash
-npx -y @getalby/cli@0.10.1 connect "<connection-secret>"
+npx -y @getalby/cli@0.10.2 connect "<connection-secret>"
 ```
 
 This validates and saves the connection secret to `~/.alby-cli/connection-secret.key`. Use `--force` to overwrite an existing connection. Alternatively, set the `NWC_URL` environment variable. **NEVER paste or share the connection secret in chat.**
